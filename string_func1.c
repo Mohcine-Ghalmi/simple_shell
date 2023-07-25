@@ -15,14 +15,19 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
  */
 char *ft_strchr(char *s, char c)
 {
-	int index;
+	int		i;
+	char	find;
 
-	for (index = 0; s[index]; index++)
+	find = (char)c;
+	i = 0;
+	while (s[i])
 	{
-		if (s[index] == c)
-			return (s + index);
+		if (s[i] == find)
+			return ((char *)s + i);
+		i++;
 	}
-
+	if (s[i] == find)
+		return ((char *)s + i);
 	return (NULL);
 }
 
@@ -87,19 +92,18 @@ int ft_strcmp(char *s1, char *s2)
  *         0 if s1 and s2 match.
  *         Greater than 0 if s1 is longer than s2.
  */
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	for (i = 0; s1[i] && s2[i] && i < n; i++)
-	{
-		if (s1[i] > s2[i])
-			return (s1[i] - s2[i]);
-		else if (s1[i] < s2[i])
-			return (s1[i] - s2[i]);
-	}
-	if (i == n)
+	i = 0;
+	if (n == 0)
 		return (0);
-	else
-		return (-15);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (str1[i] && str2[i] && str1[i] == str2[i] && --n)
+		++i;
+	return (str1[i] - str2[i]);
 }

@@ -7,19 +7,18 @@ char *ft_strncat(char *dest, const char *src, size_t n);
 
 /**
  * ft_strlen - Returns the length of a string.
- * @s: A pointer to the characters string.
+ * @str: A pointer to the characters string.
  *
  * Return: The length of the character string.
  */
-int ft_strlen(const char *s)
+int ft_strlen(const char *str)
 {
-	int length = 0;
+	int	i;
 
-	if (!s)
-		return (length);
-	for (length = 0; s[length]; length++)
-		;
-	return (length);
+	i = 0;
+	while (str[i])
+	i++;
+	return (i);
 }
 
 /**
